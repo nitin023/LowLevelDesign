@@ -22,6 +22,7 @@ public class Main {
             System.out.println("Department Name = " + k + " has employees as = " + v);
         });
 
+
         int[][] array = new int[][]{{1, 2}, {3, 4}, {5, 6}};
 
         // Java 8
