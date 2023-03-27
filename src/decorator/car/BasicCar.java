@@ -1,4 +1,4 @@
-package decorator;
+package decorator.car;
 
 public class BasicCar implements Car{
     @Override

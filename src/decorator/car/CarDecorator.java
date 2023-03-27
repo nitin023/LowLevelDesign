@@ -1,4 +1,4 @@
-package decorator;
+package decorator.car;
 
 public class CarDecorator implements Car {
 
