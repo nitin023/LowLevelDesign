@@ -1,11 +1,15 @@
 package LoadBalancer;
 
 public class LoadBalancerFactory {
-//    public LoadBalancer createLoadBalancer(String loadBalType) {
-//        return switch (loadBalType) {
-//            case "round-robin" -> new RoundRobinLoadBalancer();
-//            case "least-connection" -> new LeastConnectionLoadBalancer();
-//            default -> new RoutedLoadBalancer() ;
-//        };
-//    }
+    public LoadBalancer createLoadBalancer(String loadBalType) {
+        LoadBalancer loadBalancer = null;
+        switch (loadBalType){
+            case "round-robin" : loadBalancer = new RoundRobinLoadBalancer();
+            break;
+            case "least-connection" : loadBalancer = new LeastConnectionLoadBalancer();
+            break;
+            default: loadBalancer = new RoutedLoadBalancer();
+        }
+        return loadBalancer;
+    }
 }
