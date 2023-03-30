@@ -1,5 +1,5 @@
 package LoadBalancer;
 
 public enum RequestType {
-    LIGHT , MEDIUM , HEAVY
+    GROUP,PROFILE,ORDER
 }
