@@ -1,15 +1,16 @@
-package UserApiRateLimiter;
+package RateLimiter;
 
 public class RateLimiterTest {
     public static void main(String[] args) {
-        //simpleRateLimiter();
-        userBasedRateLimiting();
+        simpleRateLimiter();
+        //userBasedRateLimiting();
     }
 
     private static void simpleRateLimiter() {
-        SlidingWindowRateLimiter slidingWindowRateLimiter = new SlidingWindowRateLimiter(60, 10);
+        RateLimiterFactory rateLimiterFactory = new RateLimiterFactory();
+        RateLimiter slidingWindowRateLimiter = rateLimiterFactory.getRateLimiter("sliding-window",60,10);
         for (int i = 0; i < 30; i++) {
-            if (slidingWindowRateLimiter.allowRequest()) System.out.println("Request" + i + " allowed");
+            if (slidingWindowRateLimiter.grantAccess()) System.out.println("Request" + i + " allowed");
             else System.out.println("Request " + i + " denied");
         }
     }
