@@ -11,14 +11,13 @@ public class DelayedScheduler {
         this.startExecute();
     }
 
-    private boolean put(DelayedTask task) {
+    private void put(DelayedTask task) {
         synchronized (this) {
             this.queue.offer(task);
             if (task == this.queue.peek()) {
                 notify();
             }
         }
-        return true;
     }
 
     private DelayedTask take() throws InterruptedException {
