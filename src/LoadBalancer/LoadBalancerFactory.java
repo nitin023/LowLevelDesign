@@ -1,7 +1,7 @@
 package LoadBalancer;
 
 public class LoadBalancerFactory {
-    public LoadBalancer createLoadBalancer(String loadBalType) {
+    public static LoadBalancer createLoadBalancer(String loadBalType) {
         LoadBalancer loadBalancer = null;
         switch (loadBalType){
             case "round-robin" : loadBalancer = new RoundRobinLoadBalancer();

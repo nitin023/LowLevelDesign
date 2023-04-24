@@ -1,17 +1,16 @@
 package LoadBalancer;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class RoundRobinLoadBalancer extends LoadBalancer {
+    private AtomicInteger counter = new AtomicInteger(1);
     @Override
     Destination balanceLoad(Request request) {
-        Map<RequestType, Queue<Destination>> requestTypeDestinationQueueMap = new HashMap<>();
-
         Set<Destination> destinationSet = getDestinations(request);
-        requestTypeDestinationQueueMap.putIfAbsent(request.requestType, convertSetToQueue(destinationSet));
-
-        Destination destination = requestTypeDestinationQueueMap.get(request.requestType).poll();
-        requestTypeDestinationQueueMap.get(request.requestType).add(destination);
+        Destination destination = destinationSet.stream().collect(Collectors.toList()).get(counter.get()%destinationSet.size());
+        counter.addAndGet(1);
         return destination;
     }
 

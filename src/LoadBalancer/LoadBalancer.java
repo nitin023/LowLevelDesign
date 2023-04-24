@@ -5,12 +5,13 @@ package LoadBalancer;
  * https://github.com/InterviewReady/Low-Level-Design/blob/main/LoadBalancer.java
  */
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public abstract class LoadBalancer {
 
-    Map<RequestType, Service> serviceMap;
+    Map<RequestType, Service> serviceMap = new HashMap<>();
 
     abstract Destination balanceLoad(Request request);
 
